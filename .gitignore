@@ -3,6 +3,14 @@
 # dependencies
 node_modules/
 
+
+# Ruby Gem Cache
+.gem/
+
+# macOS system files
+.DS_Store
+
+
 # Expo
 .expo/
 dist/
