@@ -1,12 +1,23 @@
 import { Text, View, StyleSheet, SafeAreaView, Platform } from "react-native";
-import React from "react";     
+import React from "react";    
+import { Searchbar } from 'react-native-paper';
+import { useState } from "react";
+
+
+
 
 export default function Index() {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
   return (
     <>
     <SafeAreaView style={styles.container}>
     <View style={styles.search}>
-      <Text> search </Text>
+     <Searchbar
+      placeholder="Search"
+      onChangeText={setSearchQuery}
+      value={searchQuery}
+    />
     </View>
     <View style = {styles.list}>
       <Text> List </Text>
