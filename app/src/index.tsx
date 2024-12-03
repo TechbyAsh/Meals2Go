@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar'
 import { Text, View, StyleSheet, SafeAreaView, Platform } from "react-native";
 import React from "react";    
 import { Searchbar } from 'react-native-paper';
@@ -23,6 +24,7 @@ export default function Index() {
       <Text> List </Text>
     </View>
     </SafeAreaView>
+    <StatusBar style="auto" />
     </>
   );
 }
