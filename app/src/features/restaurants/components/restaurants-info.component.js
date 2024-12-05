@@ -4,6 +4,16 @@ import { Card } from "react-native-paper";
 import styled from 'styled-components/native';
 
 
+const RestaurantCard = styled(Card) `
+background-color: pink;
+padding: 15px;
+border-radius: 20px
+`
+const RestaurantCardCover = styled(Card.Cover) `
+ padding: 15px ; 
+ border-radius: 20px;
+ border-bottom: double;
+`
 export const RestaurantCardInfo = ({resturants ={}}) => { 
 const {
     name = ['Gems Resturant', 'Tonys Resturant'],
@@ -15,10 +25,10 @@ const {
 } = resturants
 
     return ( 
-    <Card mode="elevated" elevation={10} style={styles.cardstyle1}>
-        <Card.Cover  source={{ uri: photos[0] }} style={styles.cardCoverstyles}/>
+    <RestaurantCard mode="elevated" elevation={10} >
         <Text> {name [0]} </Text>;
-    </Card>
+        < RestaurantCardCover  source={{ uri: photos[0] }} /> 
+    </RestaurantCard>
     
     );
 } 
@@ -27,12 +37,8 @@ const styles = StyleSheet.create({
     container: {flex : 1, 
     padding: 20,
     },
-    cardstyle1:{backgroundColor: 'pink', 
-    padding:15, 
-    borderRadius:20},
+
     cardstyle2:{backgroundColor: 'yellow', 
     padding:15, 
     borderRadius:20},
-    cardCoverstyles: {padding: 5, 
-    borderRadius:10,},
-    })
+})
