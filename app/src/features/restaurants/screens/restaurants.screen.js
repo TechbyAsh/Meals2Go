@@ -3,6 +3,7 @@ import React from "react";
 import { Searchbar } from 'react-native-paper';
 import { useState } from "react";
 
+
 import {RestaurantCardInfo} from '../components/restaurants-info.component'
 
 
@@ -28,7 +29,7 @@ return (
       flex: 1,
     },
     search:{
-      backgroundColor: 'green',
+      backgroundColor: 'gold',
       padding: 16
     },
     list: {
