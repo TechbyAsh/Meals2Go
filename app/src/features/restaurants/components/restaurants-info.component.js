@@ -5,18 +5,19 @@ import styled from 'styled-components/native';
 
 
 const Title = styled.Text `
-font-family: ${(props) => props.theme.fonts.body};
-padding: 16px ;
+font-family: ${(props) => props.theme.fonts.heading};
+font-size: ${(props)=> props.theme.sizes[2]};
+padding: ${(props) => props.theme.space[3]}; 
 color: ${(props) => props.theme.colors.ui.success}; `
 
 const RestaurantCard = styled(Card) `
-background-color: pink;
-padding: 15px;
-border-radius: 20px
+background-color: ${(props) => props.theme.colors.ui.card};
+padding: ${(props) => props.theme.space[3]};
+border-radius: ${(props) => props.theme.sizes[1]};
 `
 const RestaurantCardCover = styled(Card.Cover) `
- padding: 15px ; 
- border-radius: 20px;
+ padding: ${(props) => props.theme.space[3]};
+ border-radius: ${(props) => props.theme.sizes[1]};
  border-bottom: double;
 `
 export const RestaurantCardInfo = ({resturants ={}}) => { 

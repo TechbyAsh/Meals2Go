@@ -13,13 +13,14 @@ const SafeArea = styled(SafeAreaView)`
 `;
 
 const SearchBox = styled.View `
-background-color: gold;
-      padding: 16px `
+background-color: ${(props) => props.theme.colors.ui.header};
+      padding: ${(props) => props.theme.space[3]}; 
+      `
       
       const ListBox = styled.View `
       flex: 1;
-      padding: 16px;
-      background-color: silver;
+      padding: ${(props) => props.theme.space[3]};
+      background-color: ${(props) => props.theme.colors.bg.secondary};
   `
 
 export const RestaurantsScreen = () => {

@@ -927,10 +927,20 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/lato/-/lato-0.2.3.tgz#32456b5c49d9f84d2b22ecfa8f50027555439e9c"
   integrity sha512-X56FEZn2GNYtI2/UqyOps7TShuDwi/k9JKa7VzM0x2ywBOnhTtXGq2IsZyNPzT9KnQA/ID84F9yiMS8e3obu0g==
 
+"@expo-google-fonts/open-sans@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/open-sans/-/open-sans-0.2.3.tgz#63b9f9a555f8764718d3370757431ee084ca66ec"
+  integrity sha512-HjEue5908n2yTtNSo47lAN3UFi2sAp00u6E3tx9nSEr0P2SDFDjYgsA89nPaAYOyxDN0EPGtNTa2K/VUe3jgmA==
+
 "@expo-google-fonts/oswald@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/oswald/-/oswald-0.2.3.tgz#5f9b2a9c6ee34b9735c92956061f0fde5dd2f4a3"
   integrity sha512-LQhPBNx3UuS6Ug4pyyoqYA9KtxW9FlOixGhAUZm9kue/7IufaGPGd/VkXyy2TpdCIzvpRcDTXu+GRPwEKEzUSw==
+
+"@expo-google-fonts/poiret-one@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poiret-one/-/poiret-one-0.2.3.tgz#4838b0f095e2fe10b49b054a394464f14cb5b724"
+  integrity sha512-t8jRwF9ZYyrCXSCpVS+aEc1eLbo6koU76S0vzPgm4m0eryVGfTXCJqx6YM48hEm2nm421Letwai5VHRHP7SV0w==
 
 "@expo/bunyan@^4.0.0":
   version "4.0.1"

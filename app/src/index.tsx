@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar'
 import { Text, View, StyleSheet, SafeAreaView,} from "react-native";
 import React from "react";    
 import { ThemeProvider } from "styled-components/native";
-import {  useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/oswald';
-import {  useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
+import {  useFonts as useOpenSans, OpenSans_400Regular } from '@expo-google-fonts/open-sans';
+import {  useFonts as usePoiret, PoiretOne_400Regular } from '@expo-google-fonts/poiret-one';
 
 import {RestaurantsScreen} from './features/restaurants/screens/restaurants.screen'
 import { theme } from './infrastructure/theme/index'
@@ -12,15 +12,15 @@ import { theme } from './infrastructure/theme/index'
 
 export default function Index() {
  
-  const [oswaldLoaded] = useOswald({
-    Oswald_400Regular,
+  const [openSansLoaded] = useOpenSans({
+    OpenSans_400Regular,
   });
 
-  const [latoLoaded] = useLato({
-    Lato_400Regular,
+  const [poiretOneLoaded] = usePoiret({
+    PoiretOne_400Regular,
   });
 
-  if (!oswaldLoaded || !latoLoaded ) {
+  if (!openSansLoaded|| !poiretOneLoaded ) {
     return null;
   }
 
