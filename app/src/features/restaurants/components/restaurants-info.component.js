@@ -4,6 +4,11 @@ import { Card } from "react-native-paper";
 import styled from 'styled-components/native';
 
 
+const Title = styled.Text `
+font-family: ${(props) => props.theme.fonts.body};
+padding: 16px ;
+color: ${(props) => props.theme.colors.ui.success}; `
+
 const RestaurantCard = styled(Card) `
 background-color: pink;
 padding: 15px;
@@ -26,7 +31,7 @@ const {
 
     return ( 
     <RestaurantCard mode="elevated" elevation={10} >
-        <Text> {name [0]} </Text>;
+        <Title> {name [0]} </Title>;
         < RestaurantCardCover  source={{ uri: photos[0] }} /> 
     </RestaurantCard>
     
