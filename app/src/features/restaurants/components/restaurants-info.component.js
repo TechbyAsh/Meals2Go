@@ -1,51 +1,28 @@
 import React from "react";
-import { Text, StyleSheet, Image, View } from "react-native";
+import {  Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from 'styled-components/native';
-
-
 import { SvgXml } from 'react-native-svg';
+
+
 import star from '../../../../../assets/star'; 
 import open from '../../../../../assets/open';
+import { Spacer } from "../../../components/spacer/spacer.component"
+import { Text } from '../../../components/typography/text.component'
+
+import {
+    RestaurantCard,
+    RestaurantCardCover,
+    Info,
+    Section,
+    SectionEnd,
+    Rating,
+    Icon,
+    Address,
+  } from '../../restaurants/components/restaurant-info.styles';
+  
 
 
-const Title = styled.Text `
-font-family: ${(props) => props.theme.fonts.heading};
-font-size: ${(props)=> props.theme.fontSizes.body}; 
-color: ${(props) => props.theme.colors.ui.success}; `
-
- const Address = styled.Text `
- font-family: ${(props) => props.theme.fonts.body};
- font-size: ${(props)=> props.theme.fontSizes.caption}; 
- color: ${(props) => props.theme.colors.ui.success}; `
-
- const Info = styled.View `
-padding: ${(props) => props.theme.space[3]}; 
- `
- const Rating = styled.View `
- flex-direction: row;
- padding-top: ${(props) => props.theme.space[2]} ;
- padding-bottom: ${(props) => props.theme.space[2]} ;
- `
-const Section = styled.View `
-flex-direction: row;
-align-items: center; 
-  `
- const SectionEnd = styled.View `
- flex: 1;
- flex-direction: row;
- justify-content: flex-end; 
-   `
-const RestaurantCard = styled(Card) `
-background-color: ${(props) => props.theme.colors.ui.card};
-padding: ${(props) => props.theme.space[3]};
-border-radius: ${(props) => props.theme.sizes[1]};
-`
-const RestaurantCardCover = styled(Card.Cover) `
- padding: ${(props) => props.theme.space[3]};
- border-radius: ${(props) => props.theme.sizes[1]};
- border-bottom: double;
-`
 export const RestaurantCardInfo = ({resturants ={}}) => { 
 const {
     name = ['Gems Resturant', 'Tonys Resturant'],
@@ -63,7 +40,7 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
     <RestaurantCard mode="elevated" elevation={10} >
         < RestaurantCardCover  source={{ uri: photos[0] }} /> 
         <Info>
-        <Title> {name [0]} </Title>
+        <Text variant="label"> {name [0]} </Text>
         <Section>
         <Rating>
         {ratingArray.map(() => (
@@ -71,13 +48,13 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
         </Rating>
         <SectionEnd> 
         {isClosedTemporarily && (
-              <Text variant="label" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Text> )}
-              <View style={{ paddingLeft: 16 }} />
+              <Text variant="error"> CLOSED TEMPORARILY </Text> )}
+              <Spacer position="left" size="large">
             {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}
-            <View style={{ paddingLeft: 16 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+             </Spacer> 
+             <Spacer position="left" size="large">
+             <Icon source={{ uri: icon }} />
+             </Spacer> 
         </SectionEnd>
         </Section>
         <Address>{address}</Address>
@@ -87,12 +64,3 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
     );
 } 
 
-const styles = StyleSheet.create({
-    container: {flex : 1, 
-    padding: 20,
-    },
-
-    cardstyle2:{backgroundColor: 'yellow', 
-    padding:15, 
-    borderRadius:20},
-})
