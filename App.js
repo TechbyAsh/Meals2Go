@@ -7,9 +7,9 @@ import {  useFonts as usePoiret, PoiretOne_400Regular } from '@expo-google-fonts
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {RestaurantsScreen} from './features/restaurants/screens/restaurants.screen'
-import { theme } from './infrastructure/theme/index'
-import { SafeArea } from './components/utility/safe-area.component'
+import {RestaurantsScreen} from './src/features/restaurants/screens/restaurants.screen'
+import { theme } from './src/infrastructure/theme/index'
+import { SafeArea } from './src/components/utility/safe-area.component'
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +24,7 @@ const Map = () => (
   </SafeArea>
 );
 
-export default function Index() {
+export default function App() {
  
   const [openSansLoaded] = useOpenSans({
     OpenSans_400Regular,
@@ -42,9 +42,11 @@ export default function Index() {
     <>
     <ThemeProvider theme={theme}>
     <NavigationContainer>
+    <Tab.Navigator>
        <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
        <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Settings" component={Settings} />
+      </Tab.Navigator>
     </NavigationContainer>
     </ThemeProvider>
     <StatusBar style="auto" />
