@@ -1,12 +1,14 @@
 import { FlatList} from "react-native";
-import React from "react";    
+import React, {useContext} from "react";    
 import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
 
 
 import {RestaurantCardInfo} from '../components/restaurants-info.component'
+import { RestaurantsContext} from '../../../services/resturants/resturant.context'
 import { Spacer } from "../../../components/spacer/spacer.component"
 import { SafeArea } from "../../../components/utility/safe-area.component"
+
 
 
 const SearchBox = styled.View `
@@ -23,6 +25,7 @@ background-color: ${(props) => props.theme.colors.ui.header};
 
 export const RestaurantsScreen = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
+    const restaurantContext = useContext(RestaurantsContext);
 return ( 
 <SafeArea>
     <SearchBox>
@@ -33,22 +36,7 @@ return (
    />
    </SearchBox>
    <RestaurantList
-    data={[
-      { name: 1 },
-      { name: 2 },
-      { name: 3 },
-      { name: 4 },
-      { name: 5 },
-      { name: 6 },
-      { name: 7 },
-      { name: 8 },
-      { name: 9 },
-      { name: 10 },
-      { name: 11 },
-      { name: 12 },
-      { name: 13 },
-      { name: 14 },
-    ]}
+    data={restaurantContext.restaurants}
    renderItem={() => (
     <Spacer position="bottom" size="large">
       <RestaurantCardInfo />
