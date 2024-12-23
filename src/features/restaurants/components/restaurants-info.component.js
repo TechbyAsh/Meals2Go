@@ -37,7 +37,7 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
     <RestaurantCard mode="elevated" elevation={10} >
         < RestaurantCardCover  source={{ uri: photos[0] }} /> 
         <Info>
-        <Text variant="label"> {name [0]} </Text>
+        <Text variant="label"> {name} </Text>
         <Section>
         <Rating>
         {ratingArray.map(() => (
