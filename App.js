@@ -11,6 +11,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import {RestaurantsScreen} from './src/features/restaurants/screens/restaurants.screen'
 import {RestaurantsContextProvider} from './src/services/resturants/resturant.context'
+import {LocationContextProvider} from './src/services/location/location.context'
 import { theme } from './src/infrastructure/theme/index'
 import { SafeArea } from './src/components/utility/safe-area.component'
 
@@ -58,6 +59,7 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
+      < LocationContextProvider>
       <RestaurantsContextProvider>
     <NavigationContainer>
     <Tab.Navigator  
@@ -73,6 +75,7 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
     </RestaurantsContextProvider>
+    </LocationContextProvider>
     </ThemeProvider>
     <StatusBar style="auto" />
     </>

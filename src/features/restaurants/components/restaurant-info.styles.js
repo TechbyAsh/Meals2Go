@@ -30,11 +30,10 @@ justify-content: flex-end;
   `
   export const RestaurantCard = styled(Card) `
 background-color: ${(props) => props.theme.colors.ui.card};
-padding: ${(props) => props.theme.space[3]};
-border-radius: ${(props) => props.theme.sizes[1]};
+padding: ${(props) => props.theme.space[2]};
+border-radius: ${(props) => props.theme.sizes[0]};
 `
 export const RestaurantCardCover = styled(Card.Cover) `
-padding: ${(props) => props.theme.space[3]};
-border-radius: ${(props) => props.theme.sizes[1]};
-border-bottom: double;
+padding: ${(props) => props.theme.space[0]};
+border-radius: ${(props) => props.theme.sizes[0]};
 `
