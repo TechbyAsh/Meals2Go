@@ -1,4 +1,4 @@
-import { FlatList} from "react-native";
+import { FlatList , TouchableOpacity } from "react-native";
 import React, {useContext} from "react";    
 import styled from 'styled-components/native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
@@ -28,10 +28,10 @@ import { SafeArea } from "../../../components/utility/safe-area.component"
 `;
 
 
-export const RestaurantsScreen = () => {
-    const [searchQuery, setSearchQuery] = React.useState('');
-    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-   
+export const RestaurantsScreen = ({navigation}) => {
+ 
+    const { isLoading,  restaurants } = useContext(RestaurantsContext);
+
 return ( 
 <SafeArea>
 {isLoading && (
@@ -44,9 +44,15 @@ return (
     data={restaurants}
    renderItem={({ item }) => {
     return (
+      <TouchableOpacity
+              onPress={() => navigation.navigate("RestaurantDetail" , {
+                restaurant: item,
+    })}
+            >
     <Spacer position="bottom" size="large">
       <RestaurantCardInfo restaurant={item} />
     </Spacer>
+    </TouchableOpacity>
 )}}
   keyExtractor={(item) => item.name}
    />

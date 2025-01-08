@@ -28,7 +28,8 @@ const {
     address  = '123 somewhere street',
     isOpenNow = true,
     rating = 4, 
-    isClosedTemporarily= true ,
+    isClosedTemporarily= true,
+    placeId,
 } = restaurant
 
 const ratingArray = Array.from(new Array(Math.floor(rating)))
@@ -40,9 +41,13 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
         <Text variant="label"> {name} </Text>
         <Section>
         <Rating>
-        {ratingArray.map(() => (
-        // eslint-disable-next-line react/jsx-key
-        <SvgXml xml={star} width={20} height={20} /> ))}
+        {ratingArray.map((_, i) => (
+      
+        <SvgXml 
+        key={`star-${placeId}-${i}`}
+        xml={star} 
+        width={20}
+         height={20} /> ))}
         </Rating>
         <SectionEnd> 
         {isClosedTemporarily && (
