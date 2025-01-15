@@ -8,6 +8,7 @@ import {  useFonts as usePoiret, PoiretOne_400Regular } from '@expo-google-fonts
 
 import {RestaurantsContextProvider} from './src/services/resturants/resturant.context'
 import {LocationContextProvider} from './src/services/location/location.context'
+import {FavouritesContextProvider} from './src/services/favourites/favourites.context'
 import {Navigation} from './src/infrastructure/navigation/index'
 import { theme } from './src/infrastructure/theme/index'
 
@@ -32,11 +33,13 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
-      < LocationContextProvider>
+     <FavouritesContextProvider>
+      <LocationContextProvider>
       <RestaurantsContextProvider>
      <Navigation />
     </RestaurantsContextProvider>
     </LocationContextProvider>
+    </FavouritesContextProvider>
     </ThemeProvider>
     <StatusBar style="auto" />
     </>

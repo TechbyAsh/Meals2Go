@@ -1,10 +1,12 @@
 import React from "react";
 import { SvgXml } from 'react-native-svg';
+import {View} from 'react-native'
 
 import star from '../../../../assets/star'; 
 import open from '../../../../assets/open';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { Text } from '../../../components/typography/text.component';
+import {Favourite} from '../../../components/favourites/favourite.component'; 
 
 import {
     RestaurantCard,
@@ -36,7 +38,10 @@ const ratingArray = Array.from(new Array(Math.floor(rating)))
 
     return ( 
     <RestaurantCard mode="elevated" elevation={10} >
-        < RestaurantCardCover  source={{ uri: photos[0] }} /> 
+        <View>
+        <Favourite restaurant={restaurant} />
+        < RestaurantCardCover key={name}  source={{ uri: photos[0] }} /> 
+        </View>
         <Info>
         <Text variant="label"> {name} </Text>
         <Section>

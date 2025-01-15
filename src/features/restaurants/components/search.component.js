@@ -8,7 +8,7 @@ const SearchBox = styled.View `
 background-color: ${(props) => props.theme.colors.ui.header};
       padding: ${(props) => props.theme.space[3]}; 
       `
-      export const Search = () => {
+      export const Search = ({isFavouritesToggled, onFavouritesToggle} ) => {
         const { keyword, search } = useContext(LocationContext);
         const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -19,6 +19,8 @@ background-color: ${(props) => props.theme.colors.ui.header};
         return ( 
             <SearchBox>
             <Searchbar
+            icon={isFavouritesToggled ? "heart" : "heart-outline"}
+            onIconPress={onFavouritesToggle}
               placeholder="Search for a location"
               value={searchKeyword}
               onSubmitEditing={() => {
