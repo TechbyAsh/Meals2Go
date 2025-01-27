@@ -6,10 +6,7 @@ import {  useFonts as usePoiret, PoiretOne_400Regular } from '@expo-google-fonts
 
 
 
-import {RestaurantsContextProvider} from './src/services/resturants/resturant.context'
-import {LocationContextProvider} from './src/services/location/location.context'
 import { AuthenticationContextProvider } from './src/services/authentication/authentication.context'
-import {FavouritesContextProvider} from './src/services/favourites/favourites.context'
 import {Navigation} from './src/infrastructure/navigation/index'
 import { theme } from './src/infrastructure/theme/index'
 import { initializeApp } from "firebase/app";
@@ -45,13 +42,7 @@ export default function App() {
     <>
     <ThemeProvider theme={theme}>
     <AuthenticationContextProvider>
-     <FavouritesContextProvider>
-      <LocationContextProvider>
-      <RestaurantsContextProvider>
      <Navigation />
-    </RestaurantsContextProvider>
-    </LocationContextProvider>
-    </FavouritesContextProvider>
      </AuthenticationContextProvider>
     </ThemeProvider>
     <StatusBar style="auto" />
