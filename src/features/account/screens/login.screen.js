@@ -1,8 +1,9 @@
-import React, {useState , useContext} from "react";
+import React, {useState , useContext, useRef} from "react";
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import LottieView from 'lottie-react-native';
 
 import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput,ErrorContainer,
-    Title, } from '../components/account.styles';
+    Title, AnimationWrapper } from '../components/account.styles';
 import { Spacer } from '../../../components/spacer/spacer.component'
 import { Text } from '../../../components/typography/text.component'
 import { AuthenticationContext } from '../../../services/authentication/authentication.context'
@@ -13,10 +14,20 @@ export const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { onLogin, error, isLoading  } = useContext(AuthenticationContext);
+    const animation = useRef(null);
 
     return ( 
         <AccountBackground>
             <AccountCover />
+            <AnimationWrapper>
+        <LottieView
+          ref={animation}
+          autoPlay
+          loop
+          style={{ width: 200, height: 200 }}
+          source={require("../../../../assets/watermelon.json")}
+        />
+            </AnimationWrapper>
             <Title>Meals To Go</Title>
             <AccountContainer>
         <AuthInput

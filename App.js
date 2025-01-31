@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar'
 import React from "react";    
 import { ThemeProvider } from "styled-components/native";
-import {  useFonts as useOpenSans, OpenSans_400Regular } from '@expo-google-fonts/open-sans';
-import {  useFonts as usePoiret, PoiretOne_400Regular } from '@expo-google-fonts/poiret-one';
+import { useFonts } from '@expo-google-fonts/open-sans';
+import { OpenSans_400Regular } from '@expo-google-fonts/open-sans';
+import { PoiretOne_400Regular } from '@expo-google-fonts/poiret-one';
+import {  Lemon_400Regular } from '@expo-google-fonts/lemon';
+
 
 
 
@@ -24,19 +27,17 @@ const app = initializeApp(firebaseConfig);
 
 
 
+
 export default function App() {
  
-  const [openSansLoaded] = useOpenSans({
+  const [fontsLoaded] = useFonts({
     OpenSans_400Regular,
-  });
-
-  const [poiretOneLoaded] = usePoiret({
     PoiretOne_400Regular,
+    Lemon_400Regular,
   });
 
-  if (!openSansLoaded|| !poiretOneLoaded ) {
-    return null;
-  }
+  if (!fontsLoaded) {
+    return null; }// Return null or a loading spinner until fonts are loaded
 
   return (
     <>

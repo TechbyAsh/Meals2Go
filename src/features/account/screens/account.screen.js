@@ -1,25 +1,28 @@
 import React, {useRef} from "react";
+import {Dimensions} from 'react-native'
 import LottieView from 'lottie-react-native';
 
-import { AccountBackground, AccountCover, AccountContainer, AuthButton, Title, AnimationWrapper } from '../components/account.styles';
+import {  AccountCover, AccountContainer, AuthButton, Title, AnimatedBGWrapper } from '../components/account.styles';
 import { Spacer } from '../../../components/spacer/spacer.component'
+import { FadeInView } from '../../../components/animations/fade.animation'
 
 export const AccountScreen = ({ navigation }) => {
   const animation = useRef(null);
+  const { width, height } = Dimensions.get('window');
   return ( 
-    <AccountBackground>
-        <AccountCover />
-        <AnimationWrapper>
+    <AnimatedBGWrapper>
         <LottieView
           ref={animation}
           autoPlay
           loop
-          style={{ width: 200, height: 200 }}
-          source={require("../../../../assets/watermelon.json")}
+          style={{ position: "absolute",
+            width, 
+            height, }}
+          source={require("../../../../assets/food-bg.json")}
         />
-      </AnimationWrapper>
         <Title>Meals To Go</Title>
         <Spacer size="large"/>
+        <FadeInView>
         <AccountContainer>
         <AuthButton
           icon="lock-open-outline"
@@ -38,5 +41,6 @@ export const AccountScreen = ({ navigation }) => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
-    </AccountBackground> )
-};
+      </FadeInView>
+    </AnimatedBGWrapper> 
+)};

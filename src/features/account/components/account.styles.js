@@ -3,6 +3,8 @@ import { Button, TextInput } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
 import { Text } from "@/src/components/typography/text.component";
 
+
+
 export const AccountBackground = styled.ImageBackground.attrs({
   source: require("../../../../assets/images/home_bg.jpg"),
 })`
@@ -35,8 +37,11 @@ export const AuthButton = styled(Button).attrs({
 `;
 
 export const Title = styled(Text)`
-  font-size: 30px;
+  font-size: ${(props) => props.theme.fontSizes.h3};
   font-weight: bold;
+  padding-bottom: 40px;
+  font-family: ${(props) => props.theme.fonts.title};
+  color: ${(props) => props.theme.colors.text.title};
 `;
 export const ErrorContainer = styled.View`
   max-width: 300px;
@@ -53,3 +58,12 @@ export const AnimationWrapper = styled.View`
   align-items: center; 
   padding: ${(props) => props.theme.space[2]};
 `;
+
+export const AnimatedBGWrapper = styled.View`
+   flex: 1;  
+   width: 100%;
+  height: 100%;
+  position: absoulte;
+  justify-content: center;
+  align-items: center; 
+  `

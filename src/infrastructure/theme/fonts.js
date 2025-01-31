@@ -2,6 +2,7 @@ export const fonts = {
     body: "OpenSans_400Regular",
     heading: "PoiretOne_400Regular",
     monospace: "Oswald_400Regular",
+    title: "Lemon_400Regular"
   };
   
   export const fontWeights = {

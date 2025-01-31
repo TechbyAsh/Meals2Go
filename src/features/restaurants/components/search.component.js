@@ -5,7 +5,7 @@ import { Searchbar } from "react-native-paper";
 import {LocationContext} from '../../../services/location/location.context'
 
 const SearchBox = styled.View `
-background-color: ${(props) => props.theme.colors.ui.header};
+      background-color: transparent;
       padding: ${(props) => props.theme.space[3]}; 
       `
       export const Search = ({isFavouritesToggled, onFavouritesToggle} ) => {
