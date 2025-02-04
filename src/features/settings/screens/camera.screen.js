@@ -1,55 +1,77 @@
-
-import React, { useRef, useState, useEffect } from "react";
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import styled from "styled-components/native";
-import { View, TouchableOpacity } from "react-native";
-import { Text } from "../../../components/typography/text.component";
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const ProfileCamera = styled(CameraView)`
+
+
+/* const ProfileCamera = styled(Camera)`
   width: 100%;
   height: 100%;
-`;
-
+`; */
 
 
 export const CameraScreen = () => {
-    const [permission, requestPermission] = useCameraPermissions();
-    const [facing, setFacing] = useState<CameraType>('front');
-    const cameraRef = useRef();
-   
-    const snap = async () => {
-        if (cameraRef?.current) {
-          try {
-            const photo = await cameraRef.current.takePictureAsync();
-            console.log(photo);
-          } catch (error) {
-            console.error("Error taking picture:", error);
-          }
-        } else {
-          console.warn("Camera reference is not available");
-        }
-      };
+  const [facing, setFacing] = useState('back');
+  const [permission, requestPermission] = useCameraPermissions();
 
-    useEffect(() => {
-        if (!permission) {
-          requestPermission(); // Request permission if not already granted
-        }
-      }, [permission]);
-    
-      if (!permission) {
-        return <View />;
-      }
-    
-      if (!permission.granted) {
-        return <Text>No access to camera</Text>;
-      }
-    
+  if (!permission) {
+    // Camera permissions are still loading.
+    return <View />;
+  }
 
+  if (!permission.granted) {
+    // Camera permissions are not granted yet.
     return (
-        <TouchableOpacity onPress={snap}>
-        <ProfileCamera facing={facing}>
+      <View style={styles.container}>
+        <Text style={styles.message}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
 
-        </ProfileCamera>
-        </TouchableOpacity>
-    )
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
+  }
+
+  return (
+    <View style={styles.container}>
+      <CameraView style={styles.camera} facing={facing}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+        </View>
+      </CameraView>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  message: {
+    textAlign: 'center',
+    paddingBottom: 10,
+  },
+  camera: {
+    flex: 1,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  button: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+});
