@@ -1,6 +1,6 @@
 import React, { useState, useContext ,createContext, useEffect,} from "react";
 
-import {restaurantsRequest, restaurantsTransform} from '../resturants/mock/resturant.services'
+import {restaurantsRequest, restaurantsTransform} from '../resturants/resturant.services'
 import {LocationContext} from '../location/location.context'
 
 export const RestaurantsContext = createContext();
@@ -15,8 +15,6 @@ export const RestaurantsContextProvider = ({ children }) => {
   const retrieveRestaurants = (loc) => {
     setIsLoading(true);
     setRestaurants([]);
-
-    setTimeout(() => {
       restaurantsRequest(loc)
         .then(restaurantsTransform)
         .then((results) => {
@@ -27,7 +25,7 @@ export const RestaurantsContextProvider = ({ children }) => {
           setIsLoading(false);
           setError(err);
         });
-    }, 2000);
+   ;
   };
   
 

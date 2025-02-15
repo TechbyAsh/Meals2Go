@@ -1,15 +1,12 @@
 import camelize from "camelize";
 
-import { locations } from './location.mock';
 
-export const locationRequest = (searchTerm) => {
-  return new Promise((resolve, reject) => {
-    const locationMock = locations[searchTerm];
-    if (!locationMock) {
-      reject("not found");
-    }
-    resolve(locationMock);
-  });
+
+export const locationRequest = async (searchTerm) => {
+  const res = await fetch(
+    `https://geocode-jyzaqcbqnq-uc.a.run.app/geocode?city=${searchTerm}`
+  );
+  return await res.json();
 };
 
 export const locationTransform = (result) => {
@@ -19,3 +16,7 @@ export const locationTransform = (result) => {
 
   return { lat, lng , viewport: geometry.viewport};
 };
+
+
+
+//http://127.0.0.1:5001/mealstogo-6b10f/us-central1
