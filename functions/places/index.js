@@ -1,6 +1,23 @@
 const { mocks, addMockImage } = require("./mock");
 const url = require("url");
 
+const addGoogleImage = (restaurant, googleApiKey) => {
+  const ref = restaurant.photos[0].photo_reference;
+  if (!ref) {
+    restaurant.photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ];
+    return restaurant;
+  }
+  restaurant.photos = [
+    `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${
+      googleApiKey
+    }`,
+  ];
+  return restaurant;
+};
+
+
 module.exports.placesRequest = (request, response, client,  googleApiKey ) => {
   const { location, mock } = url.parse(request.url, true).query;
   if (!location) {
@@ -13,7 +30,7 @@ module.exports.placesRequest = (request, response, client,  googleApiKey ) => {
   }
  return response.json(data);
  }
- 
+
  client
     .placesNearby({
       params: {
@@ -38,7 +55,7 @@ module.exports.placesRequest = (request, response, client,  googleApiKey ) => {
       }
       
       // Process the results
-      res.data.results = res.data.results.map(addMockImage);
+      res.data.results = res.data.results.map(restaurant => addGoogleImage(restaurant, googleApiKey));
       return response.json(res.data);
     })
     .catch((e) => {
