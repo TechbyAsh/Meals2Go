@@ -4,8 +4,16 @@ import camelize from "camelize";
 
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
+const liveHost = "https://placesnearby-jyzaqcbqnq-uc.a.run.app";
+const localHost = " http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
+
+ const isDevelopment = process.env.NODE_ENV === "production";
+ const host = isDevelopment ? localHost : liveHost;
+
+ //console.log(process.env.NODE_ENV)
+
   const res = await fetch(
-    `https://placesnearby-jyzaqcbqnq-uc.a.run.app/placesNearby?location=${location}`
+    `${host}/placesNearby?location=${location}`
   );
   return await res.json();
 };
