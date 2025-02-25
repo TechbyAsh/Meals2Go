@@ -1,4 +1,5 @@
 import camelize from "camelize";
+import { Platform } from "react-native";
 
 
 
@@ -14,6 +15,7 @@ const localHost = " http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
   );
   return await res.json();
 };
+
 
 export const locationTransform = (result) => {
   const formattedResponse = camelize(result);

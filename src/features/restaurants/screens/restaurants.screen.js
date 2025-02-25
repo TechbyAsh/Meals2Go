@@ -9,7 +9,9 @@ import {RestaurantList} from '../components/restaurant-list.styles'
 import { Search } from '../components/search.component'
 import { RestaurantsContext} from '../../../services/resturants/resturant.context'
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { LocationContext } from "@/src/services/location/location.context";
 import { Spacer } from "../../../components/spacer/spacer.component"
+import { Text } from "@/src/components/typography/text.component";
 import { SafeArea } from "../../../components/utility/safe-area.component"
 import { FadeInView } from '../../../components/animations/fade.animation'
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
@@ -29,10 +31,12 @@ import { FavouritesBar } from "../../../components/favourites/favourites-bar.com
 
 
 export const RestaurantsScreen = ({navigation}) => {
- 
-    const { isLoading,  restaurants } = useContext(RestaurantsContext);
+    const { isLoading,  restaurants, error } = useContext(RestaurantsContext);
+    const { error: locationError} = useContext(LocationContext);
     const [isToggled, setIsToggled] = useState(false);
     const { favourites } = useContext(FavouritesContext);
+
+    const hasError = !!error || !!locationError;
 
 return ( 
 <SafeArea>
@@ -49,6 +53,12 @@ return (
         <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />
       )}
 
+{hasError && (
+        <Spacer position="left" size="large">
+          <Text variant="error">Something went wrong retrieving the data</Text>
+        </Spacer>
+      )}
+       {!hasError && (
    <RestaurantList
     data={restaurants}
    renderItem={({ item }) => {
@@ -67,6 +77,7 @@ return (
 )}}
   keyExtractor={(item) => item.name}
    />
+    )}
    </SafeArea>
    )}; 
 

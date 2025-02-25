@@ -1,10 +1,11 @@
-import { mocks, mockImages  } from '../../../functions/places/mock/index';
+
 import camelize from "camelize"; 
+import { Platform } from 'react-native';
 
 
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
-const liveHost = "https://placesnearby-jyzaqcbqnq-uc.a.run.app";
+  const liveHost = "https://placesnearby-jyzaqcbqnq-uc.a.run.app";
 const localHost = " http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
 
  const isDevelopment = process.env.NODE_ENV === "production";
@@ -32,4 +33,3 @@ export const restaurantsTransform = ({ results = [] }) => {
     return mappedResults;
   };
 
- // http://127.0.0.1:5001/mealstogo-6b10f/us-central1
