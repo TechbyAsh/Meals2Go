@@ -70,8 +70,8 @@ const RestaurantMap = ({ navigation }) => {
   };
 
   export const MapScreen = ({navigation}) => {
-    const { location } = useContext(LocationContext);
-    if (!location) {
+    const { location, error } = useContext(LocationContext);
+    if (!location || error) {
       return (
         <Map
           region={{
