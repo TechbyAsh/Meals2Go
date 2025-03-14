@@ -6,12 +6,17 @@ import { Platform } from 'react-native';
 
 export const restaurantsRequest = async (location = "37.7749295,-122.4194155") => {
   const liveHost = "https://placesnearby-jyzaqcbqnq-uc.a.run.app";
-const localHost = " http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
+const localHost = "http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
 
  const isDevelopment = process.env.NODE_ENV === "production";
  const host = isDevelopment ? localHost : liveHost;
 
  //console.log(process.env.NODE_ENV)
+ /* const liveHost = "https://placesnearby-jyzaqcbqnq-uc.a.run.app";
+const localHost = "http://127.0.0.1:5001/mealstogo-6b10f/us-central1";
+
+const isProduction = process.env.NODE_ENV === "production";
+const host = isProduction ? liveHost : localHost; */
 
   const res = await fetch(
     `${host}/placesNearby?location=${location}`
